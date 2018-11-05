@@ -12,11 +12,11 @@ while True:
         op=input("Introduzca solo \'A\', \'B\', \'C\' o \'D\' seg,un su opción: ")
     if op=="A":
         archiv_zip=input("Introduzca archivo zip: ")
-        archo=("")
+        archivos=input("introduzca los archivos a insertar separados por coma: ")
+        lista_archivos=list(archivos.split(","))
         with zipfile.ZipFile(archiv_zip,'w') as archivo_zip:
-            while archo!=("."):
-                archo=input("Introduzca archivo a incluir: ")
-                archivo_zip.write(archo)
+            for i in lista_archivos:
+                archivo_zip.write(i)
     if op=="B":
         archiv_zip=input("Introduzca archivo zip: ")
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
@@ -24,7 +24,7 @@ while True:
             print(list_files)
     if op=="C":
         archiv_zip=input("Introduzca archivo zip: ")
-        archi=input("Introduzca archivo a incluir: ")
+        archi=input("Introduzca el archivo uqe desea ver: ")
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             with archivo_zip.open(archi,'r') as texto:
                 print(texto.read())
@@ -32,6 +32,7 @@ while True:
         archiv_zip=input("Introduzca archivo zip: ")
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             archivo_zip.extractall(pwd=None)
+    archivo_zip.close()
         
 
     conti=input("¿Desea continuar?: ")
@@ -43,3 +44,4 @@ while True:
     subprocess.call(["cmd.exe","/C","cls"])
             
         
+
