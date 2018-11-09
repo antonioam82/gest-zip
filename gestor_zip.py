@@ -1,5 +1,8 @@
 import zipfile
 import subprocess
+import os
+
+lista_ar=os.listdir(Path)
 
 while True:
     print("Introduzca la acción a ejecutar")
@@ -12,24 +15,39 @@ while True:
         op=input("Introduzca solo \'A\', \'B\', \'C\' o \'D\' seg,un su opción: ")
     if op=="A":
         archiv_zip=input("Introduzca archivo zip: ")
+        if not archiv_zip in lista_ar:
+            print("Carpeta no encontrada")
+            continue
         archivos=input("introduzca los archivos a insertar separados por coma: ")
-        lista_archivos=list(archivos.split(","))
+        lista_archivos=list(archivos.split(","))########################################
         with zipfile.ZipFile(archiv_zip,'w') as archivo_zip:
             for i in lista_archivos:
                 archivo_zip.write(i)
     if op=="B":
         archiv_zip=input("Introduzca archivo zip: ")
+        if not archiv_zip in lista_ar:
+            print("Carpeta no encontrada")
+            continue
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             list_files=archivo_zip.namelist()
             print(list_files)
     if op=="C":
         archiv_zip=input("Introduzca archivo zip: ")
-        archi=input("Introduzca el archivo uqe desea ver: ")
+        if not archiv_zip in lista_ar:
+            print("Carpeta no encontrada")
+            continue
+        archi=input("Introduzca el archivo que desea ver: ")
+        #if not archi in lista_ar:
+            #print("Archivo no encontrado")###############################################
+            #continue
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             with archivo_zip.open(archi,'r') as texto:
                 print(texto.read())
     if op=="D":
         archiv_zip=input("Introduzca archivo zip: ")
+        if not archiv_zip in lista_ar:
+            print("Carpeta no encontrada")
+            continue
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             archivo_zip.extractall(pwd=None)
     archivo_zip.close()
@@ -44,4 +62,3 @@ while True:
     subprocess.call(["cmd.exe","/C","cls"])
             
         
-
