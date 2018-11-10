@@ -2,7 +2,7 @@ import zipfile
 import subprocess
 import os
 
-lista_ar=os.listdir(Path)
+lista_ar=os.listdir('/Users/Antonio/AppData/Local/Programs/Python/Python36-32/')
 
 while True:
     print("Introduzca la acción a ejecutar")
@@ -19,9 +19,12 @@ while True:
             print("Carpeta no encontrada")
             continue
         archivos=input("introduzca los archivos a insertar separados por coma: ")
-        lista_archivos=list(archivos.split(","))########################################
+        lista_archivos=list(archivos.split(","))
         with zipfile.ZipFile(archiv_zip,'w') as archivo_zip:
             for i in lista_archivos:
+                if not i in lista_ar:
+                    print("No se encontró el archivo",i)
+                    continue
                 archivo_zip.write(i)
     if op=="B":
         archiv_zip=input("Introduzca archivo zip: ")
@@ -37,9 +40,9 @@ while True:
             print("Carpeta no encontrada")
             continue
         archi=input("Introduzca el archivo que desea ver: ")
-        #if not archi in lista_ar:
-            #print("Archivo no encontrado")###############################################
-            #continue
+        if not archi in archiv_zip:
+            print("Archivo no encontrado")
+            continue
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             with archivo_zip.open(archi,'r') as texto:
                 print(texto.read())
