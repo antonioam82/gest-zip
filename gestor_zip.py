@@ -16,9 +16,6 @@ while True:
         op=input("Introduzca solo \'A\', \'B\', \'C\' o \'D\' seg,un su opción: ")
     if op=="A":
         archiv_zip=input("Introduzca archivo zip: ")
-        if not archiv_zip in lista_ar:
-            print("Carpeta no encontrada")
-            continue
         archivos=input("introduzca los archivos a insertar separados por coma: ")
         lista_archivos=list(archivos.split(","))
         with zipfile.ZipFile(archiv_zip,'w') as archivo_zip:
