@@ -2,8 +2,7 @@ import zipfile
 import subprocess
 import os
 
-#-Path- es la ruta hasta el directorio en el que se encuentra el zip.
-lista_ar=os.listdir(-Path-)
+lista_ar=os.listdir('/Users/Antonio/AppData/Local/Programs/Python/Python36-32/')
 
 while True:
     print("Introduzca la acción a ejecutar")
@@ -14,6 +13,7 @@ while True:
     op=input("Introduzca aquí su opción: ")
     while op!="A" and op!="B" and op!="C" and op!="D":
         op=input("Introduzca solo \'A\', \'B\', \'C\' o \'D\' seg,un su opción: ")
+        
     if op=="A":
         archiv_zip=input("Introduzca archivo zip: ")
         archivos=input("introduzca los archivos a insertar separados por coma: ")
@@ -52,6 +52,7 @@ while True:
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             archivo_zip.extractall(pwd=None)
     archivo_zip.close()
+    lista_ar=os.listdir(-Path-)
         
 
     conti=input("¿Desea continuar?: ")
