@@ -2,7 +2,8 @@ import zipfile
 import subprocess
 import os
 
-lista_ar=os.listdir(Path)
+#-Path- es la ruta hasta el directorio en el que se encuentra el zip.
+lista_ar=os.listdir(-Path-)
 
 while True:
     print("Introduzca la acción a ejecutar")
