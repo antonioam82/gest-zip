@@ -2,7 +2,7 @@ import zipfile
 import subprocess
 import os
 
-lista_ar=os.listdir('/Users/Antonio/AppData/Local/Programs/Python/Python36-32/')
+lista_ar=os.listdir()
 
 while True:
     print("Introduzca la acción a ejecutar")
