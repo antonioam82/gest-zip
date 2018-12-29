@@ -52,7 +52,7 @@ while True:
         with zipfile.ZipFile(archiv_zip,'r') as archivo_zip:
             archivo_zip.extractall(pwd=None)
     archivo_zip.close()
-    lista_ar=os.listdir(-Path-)
+    lista_ar=os.listdir()
         
 
     conti=input("¿Desea continuar?: ")
